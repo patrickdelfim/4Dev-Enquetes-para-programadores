@@ -1,6 +1,3 @@
 import { createContext } from 'react'
 
-export default createContext({
-  isLoading: false,
-  errorMessage: ''
-})
+export default createContext(null)

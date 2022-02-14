@@ -28,7 +28,7 @@
       margin-top: 32px;
 
       &:disabled {
-        background-color: $disabled;
+        background-color: $disabledBackground;
         color: $disabledColor;
 
         &:hover {

@@ -1,8 +1,0 @@
-name: GitHub Actions Push
-on: [push]
-jobs:
-  Explore-GitHub-Actions:
-    runs-on: ubuntu-latest
-    steps:
-      - run: eslint 'src/**'
-      - run: npm run test:ci

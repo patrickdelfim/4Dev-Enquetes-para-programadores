@@ -25,4 +25,17 @@ describe('Login', () => {
     cy.getByTestId('submit').should('have.attr', 'disabled')
     cy.getByTestId('error-wrap').should('not.have.descendants')
   })
+
+  it('should present valid state if is valid', () => {
+    cy.getByTestId('email').type(faker.internet.email())
+    cy.getByTestId('email-status')
+      .should('have.attr', 'title', 'Tudo certo!')
+      .should('contain.text', '🟢')
+    cy.getByTestId('password').type(faker.internet.password(5))
+    cy.getByTestId('password-status')
+      .should('have.attr', 'title', 'Tudo certo!')
+      .should('contain.text', '🟢')
+    cy.getByTestId('submit').should('not.have.attr', 'disabled')
+    cy.getByTestId('error-wrap').should('not.have.descendants')
+  })
 })

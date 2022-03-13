@@ -25,7 +25,7 @@ export const mockEmailInUseError = (url: RegExp): void => {
 
 export const mockUnexpectedError = (url: RegExp, method: Method): void => {
   cy.intercept(method,
-    /login/,
+    url,
     {
       statusCode: faker.helpers.randomize([400, 404, 500]),
       body: {

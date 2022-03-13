@@ -93,4 +93,21 @@ describe('Login', () => {
     cy.url().should('eq', `${baseUrl}/`)
     cy.window().then(window => assert.isOk(window.localStorage.getItem('accessToken')))
   })
+
+  it('should present UnexpectedError if invalid data is returned', () => {
+    cy.intercept('POST',
+      /login/,
+      {
+        statusCode: 200,
+        body: {
+          invalidProperty: faker.datatype.uuid()
+        }
+      })
+    cy.getByTestId('email').type(faker.internet.email())
+    cy.getByTestId('password').type(faker.internet.password(5))
+    cy.getByTestId('submit').click()
+    cy.getByTestId('spinner').should('not.exist')
+    cy.getByTestId('main-error').should('contain.text', 'Algo de errado aconteceu. tente novamente em breve.')
+    cy.url().should('eq', `${baseUrl}/login`)
+  })
 })

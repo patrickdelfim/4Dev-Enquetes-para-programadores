@@ -4,7 +4,7 @@ import { makeRemoteAuthentication } from '@/main/factories/usecases/authenticati
 import { Login } from '@/presentation/pages'
 import { makeLocalUpdateCurrentAccount } from '@/main/factories/usecases/update-current-account/local-update-current-account-factory'
 
-export const makeLogin: React.FC = () => {
+export const MakeLogin: React.FC = () => {
   return (
     <Login
       authentication={makeRemoteAuthentication()}

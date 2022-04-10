@@ -13,7 +13,7 @@ export const mockSurveyModel = (): SurveyModel => ({
     }
   ],
   date: faker.date.recent(),
-  didAwnser: faker.datatype.boolean()
+  didAnswer: faker.datatype.boolean()
 })
 
 export const mockSurveyListModel = (): SurveyModel[] => ([

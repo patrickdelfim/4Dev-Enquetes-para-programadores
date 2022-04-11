@@ -2,7 +2,7 @@ import { Footer, Header } from '@/presentation/components'
 import { SurveyContext, SurveyListItem, Error } from '@/presentation/pages/survey-list/components'
 import Styles from './survey-list.styles.scss'
 import React, { useEffect, useState } from 'react'
-import { LoadSurveyList } from '@/domain/usecases/load-survey-list'
+import { LoadSurveyList } from '@/domain/usecases'
 import { SurveyModel } from '@/domain/models'
 
 type Props = {

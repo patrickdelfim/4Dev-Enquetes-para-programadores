@@ -1,6 +1,6 @@
 import { SurveyList } from '@/presentation/pages'
 import { SurveyModel } from '@/domain/models'
-import { LoadSurveyList } from '@/domain/usecases/load-survey-list'
+import { LoadSurveyList } from '@/domain/usecases'
 import { fireEvent, render, screen, waitFor } from '@testing-library/react'
 import React from 'react'
 import { mockSurveyListModel } from '@/domain/test'

@@ -3,13 +3,22 @@ import { fireEvent, render, screen, waitFor } from '@testing-library/react'
 import React from 'react'
 import { LoadSurveyListSpy } from '@/domain/test'
 import { UnexpectedError } from '@/domain/errors'
+import { ApiContext } from '@/presentation/context'
+import { Router } from 'react-router-dom'
+import { createMemoryHistory } from 'history'
 
 type SutTypes = {
   loadSurveyListSpy: LoadSurveyListSpy
 }
-
 const makeSut = (loadSurveyListSpy = new LoadSurveyListSpy()): SutTypes => {
-  render(<SurveyList loadSurveyList={loadSurveyListSpy} />)
+  const history = createMemoryHistory()
+  render(
+    <ApiContext.Provider value={{ setCurrentAccount: jest.fn() }}>
+      <Router location={history.location} navigator={history}>
+        <SurveyList loadSurveyList={loadSurveyListSpy} />)
+      </Router>
+    </ApiContext.Provider>
+  )
   return {
     loadSurveyListSpy
   }

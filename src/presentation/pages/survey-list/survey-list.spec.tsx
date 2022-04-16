@@ -1,7 +1,7 @@
 import { SurveyList } from '@/presentation/pages'
 import { fireEvent, render, screen, waitFor } from '@testing-library/react'
 import React from 'react'
-import { LoadSurveyListSpy } from '@/domain/test'
+import { LoadSurveyListSpy, mockAccountModel } from '@/domain/test'
 import { UnexpectedError } from '@/domain/errors'
 import { ApiContext } from '@/presentation/context'
 import { Router } from 'react-router-dom'
@@ -13,7 +13,7 @@ type SutTypes = {
 const makeSut = (loadSurveyListSpy = new LoadSurveyListSpy()): SutTypes => {
   const history = createMemoryHistory()
   render(
-    <ApiContext.Provider value={{ setCurrentAccount: jest.fn() }}>
+    <ApiContext.Provider value={{ setCurrentAccount: jest.fn(), getCurrentAccount: () => mockAccountModel() }}>
       <Router location={history.location} navigator={history}>
         <SurveyList loadSurveyList={loadSurveyListSpy} />)
       </Router>

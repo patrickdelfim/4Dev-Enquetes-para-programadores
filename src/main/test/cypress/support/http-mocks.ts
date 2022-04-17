@@ -1,7 +1,7 @@
 import faker from '@faker-js/faker'
 import { Method } from 'axios'
 
-export const mockInvalidCredentialsError = (url: RegExp): void => {
+export const mockUnauthorizedError = (url: RegExp): void => {
   cy.intercept('POST',
     url,
     {
@@ -12,18 +12,16 @@ export const mockInvalidCredentialsError = (url: RegExp): void => {
     }).as('request')
 }
 
-export const mockEmailInUseError = (url: RegExp): void => {
-  cy.intercept('POST',
-    url,
-    {
-      statusCode: 403,
-      body: {
-        error: faker.random.words()
-      }
-    }).as('request')
+export const mockForbiddenError = (url: RegExp, method: Method): void => {
+  cy.intercept(method, url, {
+    statusCode: 403,
+    body: {
+      error: faker.random.words()
+    }
+  }).as('request')
 }
 
-export const mockUnexpectedError = (url: RegExp, method: Method): void => {
+export const mockServerError = (url: RegExp, method: Method): void => {
   cy.intercept(method,
     url,
     {

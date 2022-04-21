@@ -4,6 +4,13 @@ on:
     branches:
       - main
 jobs:
+
+  lintAndCoverage:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: ./.github/workflows/Build.yml
+
+
   cypress-run:
     runs-on: ubuntu-latest
     steps:
@@ -17,6 +24,7 @@ jobs:
           start: npm run dev:base
 
   deploy:
+    needs: lintAndCoverage
     needs: cypress-run
     runs-on: ubuntu-latest
     steps:

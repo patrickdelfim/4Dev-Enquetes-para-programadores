@@ -42,6 +42,7 @@ describe('SurveyList', () => {
     mockUnexpectedError()
     cy.visit('')
     cy.getByTestId('logout').click()
+    cy.wait('@request')
     Helper.testUrl('/login')
   })
 

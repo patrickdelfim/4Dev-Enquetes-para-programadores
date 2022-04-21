@@ -7,8 +7,7 @@ jobs:
 
   lintAndCoverage:
     runs-on: ubuntu-latest
-    steps:
-      - uses: ./.github/workflows/Build.yml
+    uses: ./.github/workflows/Build.yml
 
 
   cypress-run:

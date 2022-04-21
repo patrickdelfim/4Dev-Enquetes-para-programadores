@@ -24,8 +24,7 @@ jobs:
           start: npm run dev:base
 
   deploy:
-    needs: lintAndCoverage
-    needs: cypress-run
+    needs: [lintAndCoverage, cypress-run]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2

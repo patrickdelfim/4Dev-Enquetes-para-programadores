@@ -6,7 +6,6 @@ on:
 jobs:
 
   lintAndCoverage:
-    runs-on: ubuntu-latest
     uses: ./.github/workflows/Build.yml
 
 

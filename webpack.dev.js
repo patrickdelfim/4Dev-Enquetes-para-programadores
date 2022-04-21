@@ -32,6 +32,7 @@ module.exports = merge(common, {
       writeToDisk: true
     }
   },
+  devtool: 'inline-source-map',
   plugins: [
     new DefinePlugin({
       'process.env.API_URL': JSON.stringify('http://fordevs.herokuapp.com/api')

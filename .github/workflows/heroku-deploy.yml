@@ -14,10 +14,10 @@ jobs:
       - name: Cypress run
         uses: cypress-io/github-action@v2
         with:
-          build: npm run build
-          start: npm start
+          start: npm dev:base
 
   deploy:
+    needs: cypress-run
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2

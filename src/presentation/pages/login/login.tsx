@@ -39,10 +39,10 @@ const Login: React.FC<Props> = ({ validation, authentication }: Props) => {
 
     try {
       if (state.isLoading || state.isFormInvalid) return
-      setState({
-        ...state,
+      setState(old => ({
+        ...old,
         isLoading: true
-      })
+      }))
       const account = await authentication.auth({
         email: state.email,
         password: state.password
@@ -50,11 +50,11 @@ const Login: React.FC<Props> = ({ validation, authentication }: Props) => {
       setCurrentAccount(account)
       navigate('/')
     } catch (error) {
-      setState({
-        ...state,
+      setState(old => ({
+        ...old,
         mainError: error.message,
         isLoading: false
-      })
+      }))
     }
   }
 

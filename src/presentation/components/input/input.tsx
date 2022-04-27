@@ -20,7 +20,7 @@ const Input: React.FC<Props> = (props: Props) => {
             title={error}
             placeholder = " "
             data-testid={props.name}
-            onChange={e => setState({ ...state, [e.target.name]: e.target.value })}
+            onChange={e => setState(old => ({ ...old, [e.target.name]: e.target.value }))}
           />
           <label
           data-testid={`${props.name}-label`}

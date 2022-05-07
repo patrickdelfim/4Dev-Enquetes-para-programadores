@@ -1,4 +1,6 @@
 @import "../../../../styles/colors.scss";
+@import "../../../../styles/animations.scss";
+
 
 .surveyItemEmpty {
   height: 250px;
@@ -54,8 +56,3 @@
   } 
 }
 
-@keyframes shimmer {
-  100% {
-    transform: translateX(100%);
-  }
-}

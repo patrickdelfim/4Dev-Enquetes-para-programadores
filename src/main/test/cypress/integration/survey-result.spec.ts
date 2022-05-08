@@ -3,6 +3,7 @@ import * as Http from '../utils/http-mocks'
 
 const path = /api\/surveys/
 const mockUnexpectedError = (): void => Http.mockServerError(path, 'GET')
+const mockSuccess = (): Cypress.Chainable => cy.fixture('survey-result').then(fix => Http.mockOk(path, 'GET', fix))
 
 describe('SurveyResult', () => {
   beforeEach(() => {
@@ -13,5 +14,14 @@ describe('SurveyResult', () => {
     mockUnexpectedError()
     cy.visit('/surveys/any_id')
     cy.getByTestId('error').should('contain.text', 'Algo de errado aconteceu. tente novamente em breve.')
+  })
+
+  it('should reload on button click', () => {
+    mockUnexpectedError()
+    cy.visit('/surveys/any_id')
+    cy.getByTestId('error').should('contain.text', 'Algo de errado aconteceu. tente novamente em breve.')
+    mockSuccess()
+    cy.getByTestId('reload').click()
+    cy.getByTestId('question').should('exist')
   })
 })

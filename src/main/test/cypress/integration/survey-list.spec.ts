@@ -1,7 +1,7 @@
 import * as Helper from '../utils/helpers'
 import * as Http from '../utils/http-mocks'
 
-const path = /surveys/
+const path = /api\/surveys/
 const mockUnexpectedError = (): void => Http.mockServerError(path, 'GET')
 const mockAccessDeniedError = (): void => Http.mockForbiddenError(path, 'GET')
 const mockSuccess = (): Cypress.Chainable => cy.fixture('survey-list').then(fix => Http.mockOk(path, 'GET', fix))

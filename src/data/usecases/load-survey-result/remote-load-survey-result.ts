@@ -1,14 +1,14 @@
-import { HttpGetClient, HttpStatusCode } from '@/data/protocols/http'
+import { HttpClient, HttpStatusCode } from '@/data/protocols/http'
 import { AccessDeniedError, UnexpectedError } from '@/domain/errors'
 import { LoadSurveyResult } from '@/domain/usecases'
 export class RemoteLoadSurveyResult implements LoadSurveyResult {
   constructor (
     private readonly url: string,
-    private readonly HttpGetClient: HttpGetClient<RemoteLoadSurveyResult.Model>
+    private readonly HttpClient: HttpClient<RemoteLoadSurveyResult.Model>
   ) {}
 
   async load (): Promise<LoadSurveyResult.Model> {
-    const httpResponse = await this.HttpGetClient.get({ url: this.url })
+    const httpResponse = await this.HttpClient.request({ url: this.url, method: 'get' })
     const remoteSurveyResult = httpResponse.body
     switch (httpResponse.statusCode) {
       case HttpStatusCode.ok:

@@ -1,0 +1,18 @@
+  {
+    "question": "Other Question",
+    "date": "2022-03-23T00:00:00",
+    "answers": [{
+      "image": "another_image",
+      "answer": "another_answer",
+      "count": 2,
+      "percent": 50,
+      "isCurrentAccountAnswer": true
+    },{
+      "answer": "another_answer_2",
+      "count": 1,
+      "percent": 50,
+      "isCurrentAccountAnswer": false
+    }
+  ]
+  }
+
